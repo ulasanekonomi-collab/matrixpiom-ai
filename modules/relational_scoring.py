@@ -27,7 +27,17 @@ def detect_pairwise_relations(text, actors):
                                 target_index = text.find(target_lower)
                                 keyword_index = text.find(keyword)
 
-                                if source_index < keyword_index < target_index:
+                                if relation_type == "power":
+
+                                    relations.append({
+                                        "source": source,
+                                        "target": "SYSTEM",
+                                        "keyword": keyword,
+                                        "score": score,
+                                        "relation_type": relation_type
+                                    })
+
+                                elif source_index < keyword_index < target_index:
 
                                     relations.append({
                                         "source": source,
