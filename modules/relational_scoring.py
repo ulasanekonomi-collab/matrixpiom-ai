@@ -7,6 +7,8 @@ def detect_pairwise_relations(text, actors):
 
     lower_text = text.lower()
 
+    last_target = None
+
     for relation_type, keywords in RELATION_KEYWORDS.items():
 
         for keyword, score in keywords.items():
@@ -28,24 +30,22 @@ def detect_pairwise_relations(text, actors):
                     elif actor_pos > keyword_pos and target is None:
                         target = actor
 
+                # fallback target
                 if source and not target:
+                    target = last_target
 
-                    possible_targets = [
-                        actor for actor in actors
-                        if actor != source
-                    ]
-
-                    if possible_targets:
-                        target = possible_targets[-1]
+                # simpan target terakhir
+                if target:
+                    last_target = target
 
                 if source and target:
 
                     relations.append({
-                    "source": source,
-                    "target": target,
-                    "relation_type": relation_type,
-                    "keyword": keyword,
-                    "score": score
-                })
+                        "source": source,
+                        "target": target,
+                        "relation_type": relation_type,
+                        "keyword": keyword,
+                        "score": score
+                    })
 
     return relations
