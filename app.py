@@ -124,12 +124,12 @@ if st.button("🔄 Konversi ke Matriks"):
                 vmin=-5,
                 vmax=5,
                 axis=None
-            )
+             )
 
-            st.dataframe(
-                styled_matrix,
-                use_container_width=True
-            )
+             st.dataframe(
+                 styled_matrix,
+                 use_container_width=True
+             )
 
         with tab4:
 
