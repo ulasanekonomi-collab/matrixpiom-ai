@@ -2,6 +2,7 @@ import streamlit as st
 
 from modules.extractor import extract_actors
 from modules.matrix_builder import create_empty_matrix
+from modules.relational_scoring import detect_relation_score
 
 st.set_page_config(
     page_title="MatrixPIOM AI",
@@ -28,6 +29,13 @@ if st.button("🔄 Konversi ke Matriks"):
             st.write(f"• {actor}")
 
         matrix = create_empty_matrix(actors)
+        score, keywords = detect_relation_score(text)
+
+        for i in actors:
+            for j in actors:
+
+                if i != j:
+                    matrix.loc[i, j] = score
 
         st.subheader("Problem Structuring Matrix")
 
@@ -35,6 +43,10 @@ if st.button("🔄 Konversi ke Matriks"):
             matrix,
             use_container_width=True
         )
+st.subheader("Relational Interpretation")
 
+st.write(f"Detected keywords: {keywords}")
+
+st.write(f"Generated relational score: {score}")
     else:
         st.warning("Belum ada aktor terdeteksi.")
