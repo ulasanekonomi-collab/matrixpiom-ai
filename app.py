@@ -46,8 +46,11 @@ if st.button("🔄 Konversi ke Matriks"):
         for actor in actors:
             st.write(f"• {actor}")
 
-        matrix = create_empty_matrix(actors)
-
+        conflict_matrix = create_empty_matrix(actors)
+        influence_matrix = create_empty_matrix(actors)
+        collaboration_matrix = create_empty_matrix(actors)
+        power_matrix = create_empty_matrix(actors)
+        
         relations = detect_pairwise_relations(
             text,
             actors
@@ -59,21 +62,90 @@ if st.button("🔄 Konversi ke Matriks"):
             target = relation["target"]
             score = relation["score"]
 
-            matrix.loc[source, target] = score
+            relation_type = relation["relation_type"]
 
-        st.subheader("Problem Structuring Matrix")
+            if relation_type == "conflict":
+                conflict_matrix.loc[source, target] = score
 
-        styled_matrix = matrix.style.background_gradient(
-            cmap="RdYlGn",
-            vmin=-5,
-            vmax=5,
-            axis=None
-        )
+            elif relation_type == "influence":
+                influence_matrix.loc[source, target] = score
 
-        st.dataframe(
-            styled_matrix,
-            use_container_width=True
-        )
+            elif relation_type == "collaboration":
+                collaboration_matrix.loc[source, target] = score
+
+            elif relation_type == "power":
+                power_matrix.loc[source, target] = score
+                
+        tab1, tab2, tab3, tab4 = st.tabs([
+            "Conflict",
+            "Influence",
+            "Collaboration",
+            "Power"
+        ])
+
+        with tab1:
+
+            st.subheader("Conflict Matrix")
+
+            styled_matrix = conflict_matrix.style.background_gradient(
+                cmap="RdYlGn",
+                vmin=-5,
+                vmax=5,
+                axis=None
+            )
+
+            st.dataframe(
+                styled_matrix,
+                use_container_width=True
+            )
+
+        with tab2:
+
+            st.subheader("Influence Matrix")
+
+            styled_matrix = influence_matrix.style.background_gradient(
+                cmap="RdYlGn",
+                vmin=-5,
+                vmax=5,
+                axis=None
+            )
+
+            st.dataframe(
+                styled_matrix,
+                use_container_width=True
+            )
+
+        with tab3:
+
+             st.subheader("Collaboration Matrix")
+
+             styled_matrix = collaboration_matrix.style.background_gradient(
+                cmap="RdYlGn",
+                vmin=-5,
+                vmax=5,
+                axis=None
+            )
+
+            st.dataframe(
+                styled_matrix,
+                use_container_width=True
+            )
+
+        with tab4:
+
+            st.subheader("Power Matrix")
+
+            styled_matrix = power_matrix.style.background_gradient(
+                cmap="RdYlGn",
+                vmin=-5,
+                vmax=5,
+                axis=None
+            )
+
+            st.dataframe(
+                styled_matrix,
+                use_container_width=True
+            )
 
         st.subheader("Relational Interpretation")
 
