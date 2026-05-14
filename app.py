@@ -1,5 +1,7 @@
 import streamlit as st
 
+from modules.extractor import extract_actors
+
 st.set_page_config(
     page_title="MatrixPIOM AI",
     layout="wide"
@@ -14,4 +16,15 @@ text = st.text_area(
 )
 
 if st.button("🔄 Konversi ke Matriks"):
-    st.success("Engine siap dikembangkan 😄")
+
+    actors = extract_actors(text)
+
+    st.subheader("Aktor Terdeteksi")
+
+    if actors:
+
+        for actor in actors:
+            st.write(f"• {actor}")
+
+    else:
+        st.warning("Belum ada aktor terdeteksi.")
