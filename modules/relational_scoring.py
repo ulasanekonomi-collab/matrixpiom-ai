@@ -5,47 +5,44 @@ def detect_pairwise_relations(text, actors):
 
     relations = []
 
-    lower_text = text.lower()
+    sentences = text.split(".")
 
-    last_target = None
+    for sentence in sentences:
 
-    for relation_type, keywords in RELATION_KEYWORDS.items():
+        lower_sentence = sentence.lower()
 
-        for keyword, score in keywords.items():
+        for relation_type, keywords in RELATION_KEYWORDS.items():
 
-            if keyword in lower_text:
+            for keyword, score in keywords.items():
 
-                keyword_pos = lower_text.find(keyword)
+                if keyword in lower_sentence:
 
-                source = None
-                target = None
+                    keyword_pos = lower_sentence.find(keyword)
 
-                for actor in actors:
+                    source = None
+                    target = None
 
-                    actor_pos = lower_text.find(actor.lower())
+                    for actor in actors:
 
-                    if actor_pos < keyword_pos:
-                        source = actor
+                        actor_pos = lower_sentence.find(actor.lower())
 
-                    elif actor_pos > keyword_pos and target is None:
-                        target = actor
+                        if actor_pos == -1:
+                            continue
 
-                # fallback target
-                if source and not target:
-                    target = last_target
+                        if actor_pos < keyword_pos:
+                            source = actor
 
-                # simpan target terakhir
-                if target:
-                    last_target = target
+                        elif actor_pos > keyword_pos and target is None:
+                            target = actor
 
-                if source and target:
+                    if source and target:
 
-                    relations.append({
-                        "source": source,
-                        "target": target,
-                        "relation_type": relation_type,
-                        "keyword": keyword,
-                        "score": score
-                    })
+                        relations.append({
+                            "source": source,
+                            "target": target,
+                            "relation_type": relation_type,
+                            "keyword": keyword,
+                            "score": score
+                        })
 
     return relations
