@@ -11,7 +11,25 @@ st.set_page_config(
 
 st.title("🧠 MatrixPIOM AI")
 st.subheader("AI-assisted Institutional Matrix Analysis")
+with st.expander("📝 Panduan Penulisan Narasi"):
 
+    st.markdown(\"\"\"
+    Tuliskan narasi masalah secara jelas dan terstruktur.
+
+    Narasi sebaiknya memuat:
+
+    - siapa aktor yang terlibat,
+    - hubungan antaraktor,
+    - dukungan atau konflik,
+    - pihak yang mempengaruhi,
+    - serta dampak yang terjadi.
+
+    Contoh:
+
+    Pemerintah Daerah bekerja sama dengan Investor Tambang,
+    tetapi Masyarakat Adat menolak proyek tersebut karena
+    dampak lingkungan.
+    \"\"\")
 text = st.text_area(
     "Narasi Struktur Masalah",
     height=250
