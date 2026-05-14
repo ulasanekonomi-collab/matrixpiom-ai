@@ -65,6 +65,8 @@ if st.button("🔄 Konversi ke Matriks"):
 
         styled_matrix = matrix.style.background_gradient(
             cmap="RdYlGn",
+            vmin=-5,
+            vmax=5,
             axis=None
         )
 
