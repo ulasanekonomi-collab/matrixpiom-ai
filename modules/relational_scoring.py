@@ -11,19 +11,28 @@ def detect_pairwise_relations(text, actors):
 
         if keyword in lower_text:
 
-            for source in actors:
+            keyword_pos = lower_text.find(keyword)
 
-                for target in actors:
+            source = None
+            target = None
 
-                    if source != target:
+            for actor in actors:
 
-                        if source.lower() in lower_text and target.lower() in lower_text:
+                actor_pos = lower_text.find(actor.lower())
 
-                            relations.append({
-                                "source": source,
-                                "target": target,
-                                "keyword": keyword,
-                                "score": score
-                            })
+                if actor_pos < keyword_pos:
+                    source = actor
+
+                elif actor_pos > keyword_pos and target is None:
+                    target = actor
+
+            if source and target:
+
+                relations.append({
+                    "source": source,
+                    "target": target,
+                    "keyword": keyword,
+                    "score": score
+                })
 
     return relations
