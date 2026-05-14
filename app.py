@@ -29,6 +29,7 @@ if st.button("🔄 Konversi ke Matriks"):
             st.write(f"• {actor}")
 
         matrix = create_empty_matrix(actors)
+
         score, keywords = detect_relation_score(text)
 
         for i in actors:
@@ -43,10 +44,12 @@ if st.button("🔄 Konversi ke Matriks"):
             matrix,
             use_container_width=True
         )
-st.subheader("Relational Interpretation")
 
-st.write(f"Detected keywords: {keywords}")
+        st.subheader("Relational Interpretation")
 
-st.write(f"Generated relational score: {score}")
+        st.write(f"Detected keywords: {keywords}")
+
+        st.write(f"Generated relational score: {score}")
+
     else:
         st.warning("Belum ada aktor terdeteksi.")
