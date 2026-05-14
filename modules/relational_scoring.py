@@ -4,47 +4,52 @@ def detect_pairwise_relations(text, actors):
 
     relations = []
 
-    text = text.lower()
+    sentences = text.lower().split(".")
+
+    for sentence in sentences:
 
     for relation_type, keywords in RELATION_KEYWORDS.items():
 
         for keyword, score in keywords.items():
 
-            if keyword in text:
+            if keyword in sentence:
 
                 for source in actors:
 
-                    for target in actors:
+                    source_lower = source.lower()
 
-                        if source != target:
+                    if source_lower in sentence:
 
-                            source_lower = source.lower()
-                            target_lower = target.lower()
+                        if relation_type == "power":
 
-                            if source_lower in text and target_lower in text:
+                            relations.append({
+                                "source": source,
+                                "target": "SYSTEM",
+                                "keyword": keyword,
+                                "score": score,
+                                "relation_type": relation_type
+                            })
 
-                                source_index = text.find(source_lower)
-                                target_index = text.find(target_lower)
-                                keyword_index = text.find(keyword)
+                        for target in actors:
 
-                                if relation_type == "power":
+                            if source != target:
 
-                                    relations.append({
-                                        "source": source,
-                                        "target": "SYSTEM",
-                                        "keyword": keyword,
-                                        "score": score,
-                                        "relation_type": relation_type
-                                    })
+                                target_lower = target.lower()
 
-                                elif source_index < keyword_index < target_index:
+                                if target_lower in sentence:
 
-                                    relations.append({
-                                        "source": source,
-                                        "target": target,
-                                        "keyword": keyword,
-                                        "score": score,
-                                        "relation_type": relation_type
-                                    })
+                                    source_index = sentence.find(source_lower)
+                                    target_index = sentence.find(target_lower)
+                                    keyword_index = sentence.find(keyword)
+
+                                    if source_index < keyword_index < target_index:
+
+                                        relations.append({
+                                            "source": source,
+                                            "target": target,
+                                            "keyword": keyword,
+                                            "score": score,
+                                            "relation_type": relation_type
+                                        })
 
     return relations
