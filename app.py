@@ -13,7 +13,7 @@ st.title("🧠 MatrixPIOM AI")
 st.subheader("AI-assisted Institutional Matrix Analysis")
 with st.expander("📝 Panduan Penulisan Narasi"):
 
-    st.markdown(\"\"\"
+    st.markdown("""
     Tuliskan narasi masalah secara jelas dan terstruktur.
 
     Narasi sebaiknya memuat:
@@ -29,7 +29,7 @@ with st.expander("📝 Panduan Penulisan Narasi"):
     Pemerintah Daerah bekerja sama dengan Investor Tambang,
     tetapi Masyarakat Adat menolak proyek tersebut karena
     dampak lingkungan.
-    \"\"\")
+    """)
 text = st.text_area(
     "Narasi Struktur Masalah",
     height=250
