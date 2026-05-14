@@ -63,8 +63,13 @@ if st.button("🔄 Konversi ke Matriks"):
 
         st.subheader("Problem Structuring Matrix")
 
+        styled_matrix = matrix.style.background_gradient(
+            cmap="RdYlGn",
+            axis=None
+        )
+
         st.dataframe(
-            matrix,
+            styled_matrix,
             use_container_width=True
         )
 
