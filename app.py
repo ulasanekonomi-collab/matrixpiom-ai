@@ -159,5 +159,37 @@ if st.button("🔄 Konversi ke Matriks"):
                 f"{relation['keyword']} | "
                 f"score = {relation['score']}"
                 )
+        st.subheader("Institutional Diagnosis")
+
+        diagnosis = []
+
+        for relation in relations:
+
+            source = relation["source"]
+            target = relation["target"]
+            relation_type = relation["relation_type"]
+
+            if relation_type == "conflict":
+                diagnosis.append(
+                    f"{source} berada dalam konflik dengan {target}."
+                )
+
+            elif relation_type == "collaboration":
+                diagnosis.append(
+                    f"{source} membangun kolaborasi dengan {target}."
+                )
+
+            elif relation_type == "influence":
+                diagnosis.append(
+                    f"{source} memberikan pengaruh terhadap {target}."
+                )
+
+            elif relation_type == "power":
+                diagnosis.append(
+                    f"{source} memiliki dominasi kekuasaan terhadap {target}."
+                )
+
+        for item in diagnosis:
+            st.write("-", item)
     else:
         st.warning("Belum ada aktor terdeteksi.")
