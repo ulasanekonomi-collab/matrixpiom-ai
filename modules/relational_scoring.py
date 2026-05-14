@@ -1,48 +1,21 @@
 from modules.dictionaries import RELATION_KEYWORDS
 
+def detect_relation_score(text):
 
-def detect_pairwise_relations(text, actors):
+    detected_relations = []
 
-    relations = []
+    text = text.lower()
 
-    sentences = text.split(".")
+    for relation_type, keywords in RELATION_KEYWORDS.items():
 
-    for sentence in sentences:
+        for keyword, value in keywords.items():
 
-        lower_sentence = sentence.lower()
+            if keyword in text:
 
-        for relation_type, keywords in RELATION_KEYWORDS.items():
+                detected_relations.append({
+                    "type": relation_type,
+                    "keyword": keyword,
+                    "score": value
+                })
 
-            for keyword, score in keywords.items():
-
-                if keyword in lower_sentence:
-
-                    keyword_pos = lower_sentence.find(keyword)
-
-                    source = None
-                    target = None
-
-                    for actor in actors:
-
-                        actor_pos = lower_sentence.find(actor.lower())
-
-                        if actor_pos == -1:
-                            continue
-
-                        if actor_pos < keyword_pos:
-                            source = actor
-
-                        elif actor_pos > keyword_pos and target is None:
-                            target = actor
-
-                    if source and target:
-
-                        relations.append({
-                            "source": source,
-                            "target": target,
-                            "relation_type": relation_type,
-                            "keyword": keyword,
-                            "score": score
-                        })
-
-    return relations
+    return detected_relations
