@@ -28,14 +28,24 @@ def detect_pairwise_relations(text, actors):
                     elif actor_pos > keyword_pos and target is None:
                         target = actor
 
+                if source and not target:
+
+                    possible_targets = [
+                        actor for actor in actors
+                        if actor != source
+                    ]
+
+                    if possible_targets:
+                        target = possible_targets[-1]
+
                 if source and target:
 
                     relations.append({
-                        "source": source,
-                        "target": target,
-                        "relation_type": relation_type,
-                        "keyword": keyword,
-                        "score": score
-                    })
+                    "source": source,
+                    "target": target,
+                    "relation_type": relation_type,
+                    "keyword": keyword,
+                    "score": score
+                })
 
     return relations
