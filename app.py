@@ -140,7 +140,7 @@ if st.button("🔄 Konversi ke Matriks"):
             "Power"
         ])
 
-         with tab1:
+        with tab1:
 
             st.subheader("Conflict Matrix")
 
