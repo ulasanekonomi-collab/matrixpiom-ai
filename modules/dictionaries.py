@@ -32,3 +32,43 @@ RELATION_KEYWORDS = {
         "memiliki otoritas": 4
     }
 }
+ONTOLOGY = {
+
+    "actor": [
+        "pemerintah",
+        "investor",
+        "masyarakat adat",
+        "aktivis",
+        "lsm"
+    ],
+
+    "resource": [
+        "modal",
+        "teknologi",
+        "anggaran",
+        "data",
+        "lahan",
+        "informasi"
+    ],
+
+    "institution": [
+        "izin",
+        "regulasi",
+        "kebijakan",
+        "undang-undang",
+        "otoritas"
+    ],
+
+    "arena": [
+        "pasar",
+        "politik",
+        "media",
+        "birokrasi"
+    ],
+
+    "issue": [
+        "kerusakan lingkungan",
+        "konflik sosial",
+        "kemiskinan"
+    ]
+}
