@@ -13,7 +13,7 @@ st.set_page_config(
     layout="wide"
 )
 
-st.title("🧠 MatrixPIOM AI")
+st.title("POWER & INSTITUTIONAL OUTCOME MAP")
 st.subheader("AI-assisted Institutional Matrix Analysis")
 with st.expander("📝 Panduan Penulisan Narasi"):
 
