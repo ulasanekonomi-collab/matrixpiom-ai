@@ -101,9 +101,9 @@ def detect_power_relations(text, semantic_tags):
                         relations.append({
                             "source": actor,
                             "target": resource,
+                            "keyword": keyword,
                             "score": score,
-                            "relation_type": "power",
-                            "keyword": keyword
+                            "relation_type": "power"
                         })
 
     return relations
