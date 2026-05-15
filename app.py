@@ -23,15 +23,20 @@ with st.expander("📝 Panduan Penulisan Narasi"):
     Narasi dapat ditulis dengan dua cara:
 
     1. Mode Narasi Natural
+    
     Tuliskan narasi seperti penjelasan biasa.
+    
     Contoh:
+    
     Pemerintah Daerah bekerja sama dengan Investor Tambang dalam pengelolaan izin tambang. 
     Namun Masyarakat Adat menolak proyek tersebut karena dampak lingkungan. 
     LSM mempengaruhi opini masyarakat melalui kampanye publik. 
     Investor mendominasi pasar tambang di wilayah tersebut.
 
     2. Mode Semantic Tag (Opsional)
+    
     Gunakan tag untuk membantu identifikasi aktor, arena, sumber daya, atau institusi secara lebih presisi.
+    
     Tag yang tersedia:
     • (actor)
     • (arena)
@@ -40,6 +45,7 @@ with st.expander("📝 Panduan Penulisan Narasi"):
     • (issue)
 
     Contoh:
+    
     (actor) Pemerintah Daerah bekerja sama dengan (actor) Investor Tambang dalam pengelolaan (resource) izin tambang. 
     Namun (actor) Masyarakat Adat menolak proyek tersebut karena (issue) dampak lingkungan.
 
