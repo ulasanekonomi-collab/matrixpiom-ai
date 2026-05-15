@@ -7,7 +7,9 @@ from modules.relational_scoring import (
     detect_power_relations
 )
 from modules.semantic_parser import extract_semantic_tags
-
+from modules.power_index import (
+    compute_power_index
+)
 st.set_page_config(
     page_title="POWER & INSTITUTIONA OUTCOME MAPS",
     layout="wide"
@@ -203,7 +205,19 @@ if st.button("🔄 Konversi ke Matriks"):
                 styled_matrix,
                 use_container_width=True
             )
+            power_index_df = compute_power_index(
+                actors,
+                influence_matrix,
+                power_matrix,
+                collaboration_matrix,
+                conflict_matrix
+            )
+            st.subheader("Power Index Analysis")
 
+            st.dataframe(
+                power_index_df,
+                use_container_width=True
+            )
         st.subheader("Relational Interpretation")
 
         st.subheader("Detected Relations")
