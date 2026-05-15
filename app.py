@@ -9,9 +9,20 @@ from modules.relational_scoring import (
 from modules.semantic_parser import extract_semantic_tags
 
 st.set_page_config(
-    page_title="MatrixPIOM AI",
+    page_title="POWER & INSTITUTIONA OUTCOME MAPS",
     layout="wide"
 )
+st.sidebar.image(
+    "assets/yuka.png",
+    use_container_width=True
+)
+
+st.sidebar.markdown("""
+### Dikembangkan oleh
+**Yuhka Sundaya**  
+Ekonomi Pembangunan  
+Universitas Islam Bandung (UNISBA)
+""")
 
 st.title("POWER & INSTITUTIONAL OUTCOME MAP")
 st.subheader("AI-assisted Institutional Matrix Analysis")
@@ -129,7 +140,7 @@ if st.button("🔄 Konversi ke Matriks"):
             "Power"
         ])
 
-        with tab1:
+         tab1:
 
             st.subheader("Conflict Matrix")
 
@@ -239,3 +250,4 @@ if st.button("🔄 Konversi ke Matriks"):
             st.write("-", item)
     else:
         st.warning("Belum ada aktor terdeteksi.")
+        
