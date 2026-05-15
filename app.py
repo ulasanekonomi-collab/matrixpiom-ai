@@ -35,7 +35,15 @@ text = st.text_area(
     "Narasi Struktur Masalah",
     height=250
 )
+semantic_tags = extract_semantic_tags(text)
+# tampil ontology dulu
+st.subheader("Semantic Ontology Detection")
 
+for category, values in semantic_tags.items():
+    st.markdown(f"### {category.upper()}")
+    st.write(values)
+
+# baru proses matriks
 if st.button("🔄 Konversi ke Matriks"):
 
     actors = extract_actors(text)
