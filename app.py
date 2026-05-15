@@ -93,6 +93,7 @@ if st.button("🔄 Konversi ke Matriks"):
                 collaboration_matrix.loc[source, target] = score
 
             elif relation_type == "power":
+                target = relation["target"]
                 power_matrix.loc[source, target] = score
                 
         tab1, tab2, tab3, tab4 = st.tabs([
