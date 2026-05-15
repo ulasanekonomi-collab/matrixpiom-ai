@@ -40,11 +40,12 @@ text = st.text_area(
 )
 semantic_tags = extract_semantic_tags(text)
 # tampil ontology dulu
-st.subheader("Semantic Ontology Detection")
-
-for category, values in semantic_tags.items():
-    st.markdown(f"### {category.upper()}")
-    st.write(values)
+if False:
+    st.subheader("Semantic Ontology Detection")
+    
+    for category, values in semantic_tags.items():
+        st.markdown(f"### {category.upper()}")
+        st.write(values)
 
 # baru proses matriks
 if st.button("🔄 Konversi ke Matriks"):
