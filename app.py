@@ -3,6 +3,7 @@ import streamlit as st
 from modules.extractor import extract_actors
 from modules.matrix_builder import create_empty_matrix
 from modules.relational_scoring import detect_pairwise_relations
+from modules.semantic_parser import extract_semantic_tags
 
 st.set_page_config(
     page_title="MatrixPIOM AI",
