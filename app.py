@@ -2,7 +2,10 @@ import streamlit as st
 
 from modules.extractor import extract_actors
 from modules.matrix_builder import create_empty_matrix
-from modules.relational_scoring import detect_pairwise_relations
+from modules.relational_scoring import (
+    detect_pairwise_relations,
+    detect_power_relations
+)
 from modules.semantic_parser import extract_semantic_tags
 
 st.set_page_config(
@@ -64,6 +67,13 @@ if st.button("🔄 Konversi ke Matriks"):
             text,
             actors
         )
+
+        power_relations = detect_power_relations(
+            text,
+            semantic_tags
+        )
+
+        relations.extend(power_relations)
 
         for relation in relations:
 
