@@ -56,3 +56,54 @@ def detect_pairwise_relations(text, actors):
                                             })
 
     return relations
+
+def detect_power_relations(text, semantic_tags):
+
+    relations = []
+
+    actors = semantic_tags.get("actor", [])
+    resources = (
+        semantic_tags.get("resource", []) +
+        semantic_tags.get("institution", []) +
+        semantic_tags.get("arena", [])
+    )
+
+    power_keywords = {
+        "mengendalikan": 5,
+        "menguasai": 5,
+        "mendominasi": 5,
+        "mengontrol": 5,
+        "memiliki kewenangan": 4
+    }
+
+    text_lower = text.lower()
+
+    for actor in actors:
+        for resource in resources:
+
+            actor_lower = actor.lower()
+            resource_lower = resource.lower()
+
+            if actor_lower in text_lower and resource_lower in text_lower:
+
+                actor_index = text_lower.find(actor_lower)
+                resource_index = text_lower.find(resource_lower)
+
+                for keyword, score in power_keywords.items():
+
+                    keyword_index = text_lower.find(keyword)
+
+                    if (
+                        keyword_index != -1 and
+                        actor_index < keyword_index < resource_index
+                    ):
+
+                        relations.append({
+                            "source": actor,
+                            "target": resource,
+                            "score": score,
+                            "relation_type": "power",
+                            "keyword": keyword
+                        })
+
+    return relations
