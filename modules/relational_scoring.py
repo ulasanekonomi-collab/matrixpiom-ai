@@ -61,9 +61,9 @@ def detect_power_relations(text, semantic_tags):
 
     relations = []
 
-    actors = semantic_tags.get("actor", [])
+    actors = semantic_tags["ACTOR"]
     resources = (
-        semantic_tags.get("resource", []) +
+        resources = semantic_tags["RESOURCE"] +
         semantic_tags.get("institution", []) +
         semantic_tags.get("arena", [])
     )
