@@ -5,7 +5,8 @@ from modules.matrix_builder import create_empty_matrix
 
 from modules.relational_scoring import (
     detect_pairwise_relations,
-    detect_power_relations
+    detect_power_relations,
+    detect_semantic_relations
 )
 
 from modules.semantic_parser import (
@@ -117,6 +118,9 @@ if st.button("🔄 Konversi ke Matriks"):
         power_relations = detect_power_relations(
             text,
             semantic_tags
+        )
+        semantic_relations = detect_semantic_relations(
+            relation_tags
         )
 
         relations.extend(power_relations)
