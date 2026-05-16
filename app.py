@@ -2,14 +2,17 @@ import streamlit as st
 
 from modules.extractor import extract_actors
 from modules.matrix_builder import create_empty_matrix
+
 from modules.relational_scoring import (
     detect_pairwise_relations,
     detect_power_relations
 )
+
 from modules.semantic_parser import (
     extract_semantic_tags,
     extract_relation_tags
 )
+
 from modules.power_index import (
     compute_power_index
 )
