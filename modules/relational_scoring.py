@@ -61,12 +61,9 @@ def detect_power_relations(text, semantic_tags):
 
     relations = []
 
-    actors = semantic_tags["ACTOR"]
-    resources = (
-        resources = semantic_tags["RESOURCE"] +
-        semantic_tags.get("institution", []) +
-        semantic_tags.get("arena", [])
-    )
+    actors = semantic_tags.get("ACTOR", [])
+
+    resources = semantic_tags.get("RESOURCE", [])
 
     power_keywords = {
         "mengendalikan": 5,
@@ -105,5 +102,42 @@ def detect_power_relations(text, semantic_tags):
                             "score": score,
                             "relation_type": "power"
                         })
+
+    return relations
+def detect_semantic_relations(relation_tags):
+
+    relations = []
+
+    relation_type_map = {
+        "mendukung": ("collaboration", 3),
+        "bekerja sama": ("collaboration", 3),
+
+        "mempengaruhi": ("influence", 4),
+        "menekan": ("influence", 4),
+
+        "menolak": ("conflict", -3),
+        "mengkritik": ("conflict", -2),
+
+        "mengendalikan": ("power", 5),
+        "mendominasi": ("power", 5)
+    }
+
+    for relation in relation_tags:
+
+        source = relation["source"]
+        target = relation["target"]
+        keyword = relation["relation"]
+
+        if keyword in relation_type_map:
+
+            relation_type, score = relation_type_map[keyword]
+
+            relations.append({
+                "source": source,
+                "target": target,
+                "keyword": keyword,
+                "score": score,
+                "relation_type": relation_type
+            })
 
     return relations
