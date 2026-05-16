@@ -24,6 +24,14 @@ def extract_semantic_tags(text):
         "influence": r"\(relation:\s*influence\s*\)",
         "power": r"\(relation:\s*power\s*\)"
     }
+    for key, pattern in patterns.items():
+
+        matches = re.findall(pattern, text)
+
+        semantic_data[key.upper()] = matches
+
+    return semantic_data
+    
 def extract_relation_tags(text):
 
     import re
