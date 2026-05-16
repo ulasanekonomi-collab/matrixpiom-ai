@@ -6,7 +6,10 @@ from modules.relational_scoring import (
     detect_pairwise_relations,
     detect_power_relations
 )
-from modules.semantic_parser import extract_semantic_tags
+from modules.semantic_parser import (
+    extract_semantic_tags,
+    extract_relation_tags
+)
 from modules.power_index import (
     compute_power_index
 )
@@ -77,6 +80,7 @@ text = st.text_area(
     height=250
 )
 semantic_tags = extract_semantic_tags(text)
+semantic_relations = extract_relation_tags(text)
 # tampil ontology dulu
 if False:
     st.subheader("Semantic Ontology Detection")
@@ -113,6 +117,7 @@ if st.button("🔄 Konversi ke Matriks"):
         )
 
         relations.extend(power_relations)
+        relations.extend(semantic_relations)
 
         for relation in relations:
 
