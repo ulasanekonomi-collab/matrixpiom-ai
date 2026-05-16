@@ -83,6 +83,7 @@ text = st.text_area(
     height=250
 )
 semantic_tags = extract_semantic_tags(text)
+relation_tags = extract_relation_tags(text)
 semantic_relations = extract_relation_tags(text)
 # tampil ontology dulu
 if False:
