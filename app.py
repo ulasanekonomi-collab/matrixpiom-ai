@@ -8,7 +8,6 @@ from modules.relational_scoring import (
     detect_power_relations,
     detect_semantic_relations
 )
-
 from modules.semantic_parser import (
     extract_semantic_tags,
     extract_relation_tags
