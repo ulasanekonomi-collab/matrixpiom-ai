@@ -126,12 +126,11 @@ if st.button("🔄 Konversi ke Matriks"):
         relations.extend(power_relations)
         relations.extend(semantic_relations)
 
-        for relation in relations:
+        for relation in semantic_relations:
 
             source = relation["source"]
             target = relation["target"]
             score = relation["score"]
-
             relation_type = relation["relation_type"]
 
             if relation_type == "conflict":
