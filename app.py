@@ -233,15 +233,20 @@ if st.button("🔄 Konversi ke Matriks"):
         st.subheader("Relational Interpretation")
 
         st.subheader("Detected Relations")
-
+        relation_label_map = {
+            "collaboration": "bekerja sama dengan",
+            "conflict": "berkonflik dengan",
+            "influence": "mempengaruhi",
+            "power": "memiliki kekuasaan atas"
+        }
         for relation in relations:
 
             st.write(
-                f"{relation['source']} → "
-                f"{relation['target']} | "
-                f"{relation['keyword']} | "
-                f"score = {relation['score']}"
-                )
+                f"{relation['source']} "
+                f"{relation_label_map.get(relation['relation_type'])} "
+                f"{relation['target']} "
+                f"| score = {relation['score']}"
+            )
         st.subheader("Institutional Diagnosis")
 
         diagnosis = []
