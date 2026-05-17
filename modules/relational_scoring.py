@@ -98,17 +98,9 @@ def detect_semantic_relations(relation_tags):
     relations = []
 
     relation_type_map = {
-        "mendukung": ("collaboration", 3),
-        "bekerja sama": ("collaboration", 3),
-
-        "mempengaruhi": ("influence", 4),
-        "menekan": ("influence", 4),
-
-        "menolak": ("conflict", -3),
-        "mengkritik": ("conflict", -2),
-
-        "mengendalikan": ("power", 5),
-        "mendominasi": ("power", 5),
+        "collaboration": ("collaboration", 3),
+        "influence": ("influence", 4),
+        "conflict": ("conflict", -3),
         "power": ("power", 5),
     }
 
