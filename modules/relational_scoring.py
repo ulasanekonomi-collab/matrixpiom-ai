@@ -21,17 +21,6 @@ def detect_pairwise_relations(text, actors):
 
                         if source_lower in sentence:
 
-                            # KHUSUS POWER
-                            if relation_type == "power":
-
-                                relations.append({
-                                    "source": source,
-                                    "target": "SYSTEM",
-                                    "keyword": keyword,
-                                    "score": score,
-                                    "relation_type": relation_type
-                                })
-
                             # RELASI ANTAR AKTOR
                             for target in actors:
 
