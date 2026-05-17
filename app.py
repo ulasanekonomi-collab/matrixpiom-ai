@@ -88,6 +88,8 @@ relation_tags = extract_relation_tags(text)
 semantic_relations = detect_semantic_relations(
     relation_tags
 )
+relations = []
+relations.extend(semantic_relations)
 st.write(semantic_relations)
 # tampil ontology dulu
 if False:
