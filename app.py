@@ -84,7 +84,10 @@ text = st.text_area(
 )
 semantic_tags = extract_semantic_tags(text)
 relation_tags = extract_relation_tags(text)
-semantic_relations = extract_relation_tags(text)
+
+semantic_relations = detect_semantic_relations(
+    relation_tags
+)
 # tampil ontology dulu
 if False:
     st.subheader("Semantic Ontology Detection")
@@ -119,10 +122,6 @@ if st.button("🔄 Konversi ke Matriks"):
             text,
             semantic_tags
         )
-        semantic_relations = detect_semantic_relations(
-            relation_tags
-        )
-
         relations.extend(power_relations)
         relations.extend(semantic_relations)
 
