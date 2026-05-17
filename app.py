@@ -88,6 +88,7 @@ relation_tags = extract_relation_tags(text)
 semantic_relations = detect_semantic_relations(
     relation_tags
 )
+st.write(semantic_relations)
 # tampil ontology dulu
 if False:
     st.subheader("Semantic Ontology Detection")
