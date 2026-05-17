@@ -108,7 +108,8 @@ def detect_semantic_relations(relation_tags):
         "mengkritik": ("conflict", -2),
 
         "mengendalikan": ("power", 5),
-        "mendominasi": ("power", 5)
+        "mendominasi": ("power", 5),
+        "power": ("power", 5),
     }
 
     for relation in relation_tags:
