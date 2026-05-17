@@ -55,11 +55,7 @@ def detect_power_relations(text, semantic_tags):
     resources = semantic_tags.get("RESOURCE", [])
 
     power_keywords = {
-        "mengendalikan": 5,
-        "menguasai": 5,
-        "mendominasi": 5,
-        "mengontrol": 5,
-        "memiliki kewenangan": 4
+        "power": 5
     }
 
     text_lower = text.lower()
