@@ -126,7 +126,7 @@ def detect_semantic_relations(relation_tags):
 
         source = relation["source"]
         target = relation["target"]
-        keyword = relation["relation"]
+        keyword = relation["relation_type"]
 
         if keyword in relation_type_map:
 
